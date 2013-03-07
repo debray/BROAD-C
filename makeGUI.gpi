@@ -1,0 +1,21 @@
+set term postscript enhanced color size 8.5,4.8;
+set output "Output.ps";
+set ylabel "Probability";
+set xlabel "Amount"; 
+set xrange [ -24 : 58]; 
+set yrange [ 0.00 : 1. ] noreverse nowriteback;
+set nokey;
+set multiplot;
+set title "Lottery 1"
+set size 0.5, 1;
+set origin 0.0, 0.0;
+plot 'GUI.dat' every ::0::0 using 1:2:3:xtic(1) with boxes fs solid 0.25, \
+     'GUI.dat' every ::1::1 using 1:2:3:xtic(1) with boxes fs solid 0.50, \
+     'GUI.dat' every ::2::2 using 1:2:3:xtic(1) with boxes fs solid 0.75;
+set origin 0.5, 0.0;
+set title "Lottery 2"
+plot 'GUI.dat' every ::3::3 using 1:2:3:xtic(1) with boxes fs solid 0.25, \
+     'GUI.dat' every ::4::4 using 1:2:3:xtic(1) with boxes fs solid 0.50, \
+     'GUI.dat' every ::5::5 using 1:2:3:xtic(1) with boxes fs solid 0.75;
+unset multiplot
+replot;
